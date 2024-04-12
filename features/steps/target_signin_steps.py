@@ -3,11 +3,6 @@ from behave import given, when, then
 from time import sleep
 
 
-@given('Open Target main page')
-def open_target(context):
-    context.driver.get("https://www.target.com/")
-
-
 @when("Click on SignIn icon")
 def click_signin(context):
     context.driver.find_element(By.XPATH, "//a[@data-test='@web/AccountLink']").click()
