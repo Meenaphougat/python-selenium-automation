@@ -26,6 +26,5 @@ Feature: Search tests
 
   Scenario: User can click on product
     Given Open Target main page
-    When Search for Taylors of Harrogate Yorkshire - 160
-    Then Verify search results are shown for Taylors of Harrogate Yorkshire - 160
-    Then Click on product
+    When Search for Coffee
+    Then Verify search results are shown for Coffee

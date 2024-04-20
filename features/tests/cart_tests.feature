@@ -8,8 +8,12 @@ Feature: Cart Page tests
 
   Scenario: Verify Item added is visible in Cart
     Given Open target main page
-     When Search for Taylors of Harrogate Yorkshire - 160
-    Then Click on product
+    When Search for Coffee
     Then Click on Add to cart button
+    And Store product name
+    When Confirm Add to Cart button from side navigation
     When Click on View cart button to go inside Cart
-    Then Verify Item is visible in cart
+    Then Verify cart has 1 item(s)
+    And Verify cart has correct product
+
+
