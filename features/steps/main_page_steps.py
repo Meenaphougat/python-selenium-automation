@@ -11,7 +11,6 @@ HEADER_LINKS = (By.CSS_SELECTOR, "a[id*='utilityNav']")
 TARGET_CIRCLE = (By.CSS_SELECTOR, "[data-test='@web/GlobalHeader/UtilityHeader/TargetCircle']")
 ADD_TO_CART_BTN = (By.CSS_SELECTOR, "[id*='addToCartButton']")
 SIDE_NAV_PRODUCT_NAME = (By.CSS_SELECTOR, "h4[class*='StyledHeading']")
-SIDE_NAV_ADD_TO_CART_BTN = (By.CSS_SELECTOR, "[data-test='orderPickupButton']")
 
 
 @given('Open Target main page')
@@ -54,10 +53,3 @@ def verify_header_links(context, expected_amount):  # expected_amount = '5'
     assert len(links) == expected_amount, f'Expected {expected_amount} links but got {len(links)}'
 
 
-@when('Confirm Add to Cart button from side navigation')
-def side_nav_click_add_to_cart(context):
-    context.driver.find_element(*SIDE_NAV_ADD_TO_CART_BTN).click()
-    context.wait.until(
-        EC.invisibility_of_element_located(SIDE_NAV_ADD_TO_CART_BTN),
-        message='Side Nav, Add to Cart button did not disappear'
-    )

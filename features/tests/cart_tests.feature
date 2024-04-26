@@ -14,6 +14,6 @@ Feature: Cart Page tests
     When Confirm Add to Cart button from side navigation
     When Click on View cart button to go inside Cart
     Then Verify cart has 1 item(s)
-    And Verify cart has correct product
+    And Verify cart has correct Coffee product
 
 

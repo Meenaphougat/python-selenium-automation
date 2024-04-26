@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
-
+from pages.base_page import Page
 from app.application import Application
 
 
@@ -35,6 +35,7 @@ def before_step(context, step):
 def after_step(context, step):
     if step.status == 'failed':
         print('\nStep failed: ', step)
+        context.app.base_page.save_screenshot(step)
 
 
 def after_scenario(context, feature):
