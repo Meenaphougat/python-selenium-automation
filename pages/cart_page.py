@@ -9,7 +9,7 @@ class CartPage(Page):
     TOTAL_PRICE = (By.CSS_SELECTOR, "span[class*='styles__CartSummarySpan-sc-odscpb-3']")
 
     def verify_cart_empty_message(self):
-       self.verify_text('Your cart is empty', *self.CART_EMPTY_MSG)
+        self.verify_text('Your cart is empty', *self.CART_EMPTY_MSG)
 
     def verify_cart_items(self, amount):
         cart_summary_text = self.find_element(*self.CART_SUMMARY).text
@@ -18,4 +18,3 @@ class CartPage(Page):
     def verify_product_name(self, item):
         actual_name = self.find_element(*self.CART_ITEM_TITLE).text
         assert item in actual_name, f"Expected {item} but got {actual_name}"
-

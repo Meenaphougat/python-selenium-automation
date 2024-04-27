@@ -8,6 +8,9 @@ class Page:
         self.driver = driver
         self.wait = WebDriverWait(self.driver, timeout=10)
 
+    def open_url(self, url):
+        self.driver.get(url)
+
     def find_element(self, *locator):
         return self.driver.find_element(*locator)
 
@@ -47,6 +50,25 @@ class Page:
         # Get the text of the product name element and store it in the context or page object attribute
         return product_name_element.text
 
+    # Window Handles
+    def get_current_window(self):
+        current_window = self.driver.current_window_handle
+        print('Current window: ', current_window)
+        print('All windows:', self.driver.window_handles)
+        return current_window
+
+    def switch_new_window(self):
+        self.wait.until(EC.new_window_is_opened)
+        all_windows = self.driver.window_handles  # [Windows 1 , wind2 ...]
+        print('All windows:', all_windows)
+        print('Switching to this...', all_windows[1])
+        self.driver.switch_to.window(all_windows[1])
+
+    def switch_window_by_id(self, window_id):
+        print('Switching to this...', window_id)
+        self.driver.switch_to.window(window_id)
+
+    # Verifications of all types
     def verify_text(self, expected_text, *locator):
         actual_text = self.find_element(*locator).text
         assert actual_text == expected_text, f"Expected {expected_text}, but got {actual_text}"
@@ -63,3 +85,6 @@ class Page:
 
     def save_screenshot(self, name):
         self.driver.save_screenshot(f'{name}.png')
+
+    def close_page(self):
+        self.driver.close()

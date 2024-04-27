@@ -8,6 +8,22 @@ from selenium.webdriver.support import expected_conditions as EC
 SIGN_IN_TEXT = (By.XPATH, "//h1[contains(span,'Sign into your Target account')]")
 
 
+@given('Open sign in page')
+def open_sign_in_page(context):
+    context.app.sign_in_page.open_sign_in_page()
+
+
+@when('Click on Target terms and conditions link')
+def click_t_c_link(context):
+    context.app.sign_in_page.click_t_c_link()
+
+
+@then('Verify Terms and Conditions page is opened')
+def verify_tc_opened(context):
+    context.app.term_condition_page.verify_tc_opened()
+
+
+#### Steps for Sign In Icon
 @when("Click on SignIn icon")
 def click_signin(context):
     context.app.header.click_signIn()

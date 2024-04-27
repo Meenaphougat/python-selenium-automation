@@ -17,7 +17,6 @@ class Header(Page):
 
     def click_cart(self):
         self.wait_until_clickable(*self.CART_ICON)
-        #self.save_screenshot('Clicked_cart')
 
     def click_signIn(self):
         self.wait_until_clickable(*self.SIGN_IN_BTN)
